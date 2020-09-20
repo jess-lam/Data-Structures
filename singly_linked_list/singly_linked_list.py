@@ -16,6 +16,15 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+    
+    def add_to_head(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.set_next_node(self.head)
+            self.head = new_node
 
     def add_to_tail(self, value):
         new_node = Node(value)
@@ -51,10 +60,10 @@ class LinkedList:
                 while curr.get_next_node() is not self.tail:
                     curr= curr.get_next_node()
                     #at this point, curr will be the node before self.tail, so now we need to assign curr to point to None
-                    curr.set_next_node(None)
+                curr.set_next_node(None)
                     #Now we assign tail to point to curr
-                    self.tail = curr
-                    return ret_value
+                self.tail = curr
+                return ret_value
                     
 
             
