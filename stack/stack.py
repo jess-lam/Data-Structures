@@ -14,10 +14,11 @@ return elements in Last In First Out order.
 #from singly_linked_list import LinkedList
 import sys
 
+
 sys.path.append('../singly_linked_list/')
 from singly_linked_list import LinkedList
-
-class ArrStack:
+"""
+class Stack:
     def __init__(self):
         self.storage = []
 
@@ -33,8 +34,8 @@ class ArrStack:
             return None
         else:
             return self.storage.pop()
-
-class LLStack:
+"""
+class Stack:
     def __init__(self):
         self.size = 0
         self.storage = LinkedList()
@@ -53,3 +54,5 @@ class LLStack:
         else:
             self.size -= 1
             return self.storage.remove_tail()
+
+

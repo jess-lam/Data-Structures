@@ -9,10 +9,12 @@ class ListNode:
         self.next = next_node
 
     def delete(self):
-        if self.prev:
-            self.next.prev = self.prev
-        if self.next:
+        #in the case that the node is not the head
+        if self.prev: 
             self.prev.next = self.next
+        #in the case that the node is not the tail
+        if self.next:
+            self.next.prev = self.prev
             
 """
 Our doubly-linked list class. It holds references to 
@@ -118,21 +120,46 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List.
     """
     def move_to_end(self, node):
-        pass
+        if node is self.tail:
+            return
+        self.delete(node)
+        self.add_to_tail(node.value)
 
     """
     Deletes the input node from the List, preserving the 
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        #upon delete, you need to update head and tail if they are the node you are deleting and then update the pointers
+        if self.head is None:
+            return None
+        elif self.head is self.tail:
+            self.head = None
+            self.tail = None
+        elif node is self.head:
+            self.head = node.next
+            node.delete() 
+        elif node is self.tail:
+            self.tail = node.prev
+            node.delete()
+        else:
+            node.delete()
+            #no need to update head and tail in this case because they stay the same
+        self.length -= 1
 
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
     """
     def get_max(self):
-        pass
+        curr_node = self.head
+        max_value = self.head.value
+        while curr_node is not None:
+            if curr_node.value > max_value:
+                max_value = curr_node.value
+            curr_node = curr_node.next
+        return max_value
+                
     
 dll = DoublyLinkedList()
 dll.add_to_tail(1)

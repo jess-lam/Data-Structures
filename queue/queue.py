@@ -16,10 +16,10 @@ Stretch: What if you could only use instances of your Stack class to implement t
 
 import sys
 
-sys.path.append('./singly_linked_list/')
-from singly_linked_list.singly_linked_list import Node, LinkedList
-
-class ArrQueue:
+sys.path.append('../singly_linked_list/')
+from singly_linked_list import LinkedList
+"""
+class Queue:
     def __init__(self):
         self.storage = []
     
@@ -33,10 +33,10 @@ class ArrQueue:
         if len(self.storage) == 0:
             return None
         else:
-            return self.storage.unshift()
+            return self.storage.pop(0)
 
-
-class LLQueue:
+"""
+class Queue:
     def __init__(self):
         self.size = 0
         self.storage = LinkedList()
